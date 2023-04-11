@@ -30,6 +30,7 @@ let mode = level.value;
 let start = false;
 
 
+
 function Minimax(board, depth, isAi, marker)
 {
     let result = checkWinCondition (marker);
@@ -124,6 +125,7 @@ function optimalAi(array)
         array[bestMove.x][bestMove.y]= gameStatus.otherpick;
         console.log(array)
         document.getElementById(bestMove.x.toString() + bestMove.y.toString()).innerHTML = gameStatus.otherpick;
+        
         gameStatus.turn = true;
 
         let finalScore = checkWinCondition (gameStatus.otherpick);
@@ -169,9 +171,8 @@ function optimalAi(array)
 function randomAi(array)
 {
     let free = checkFreespace(boardState);
-    console.log(free);
     let rand = Math.floor(Math.random() * free);
-    console.log(free);
+    
         for (let i = 0; i < array.length; i++) {
         
             for (let j = 0; j < array[i].length; j++) {
@@ -181,6 +182,17 @@ function randomAi(array)
                     if (rand == 0)
                     {
                         array[i][j] = gameStatus.otherpick;
+                        let elem = document.getElementById(i.toString() + j.toString());
+                        if(boardState.otherpick == 'o') 
+                        {
+                            elem.setAttribute("style", "color: #FFFDE4");
+                        }
+                        if(boardState.otherpick == 'x')
+                        {
+                            elem.setAttribute("style", "color: black");
+                        }
+                        console.log("go")
+                        console.log(elem.style)
                         document.getElementById(i.toString() + j.toString()).innerHTML = gameStatus.otherpick;
                         gameStatus.turn = true;
                         let result = checkWinCondition (gameStatus.otherpick);
@@ -377,6 +389,7 @@ function manageMode()
             turnDisplay.innerHTML = "It's x turn";
         }
     }
+   
     switch (mode)
     {
         case 'unbeatable':
@@ -431,7 +444,6 @@ function resetBoard()
 {
     let i = 0
     start = false;
-    gameStatus.start = false;
 
     while (i < cell.length)
     {
@@ -499,5 +511,5 @@ x.addEventListener("click", () => managePick('x'));
 o.addEventListener("click", () => managePick('o'));
 
 replay.addEventListener("click", () => resetBoard());
-level.addEventListener("change", function(){resetBoard(); mode = level.value});
+level.addEventListener("change", function(){resetBoard(); mode = level.value, console.log(mode)});
 
