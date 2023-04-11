@@ -279,7 +279,7 @@ function play (event)
         {
             displayScore(gameStatus.otherpick, 'win');
             gameStatus.start = false;
-            setTimeout(() => {resetBoard;}, 1500);
+            setTimeout(() => {resetBoard();}, 1500);
             return;
         }
 
@@ -287,22 +287,59 @@ function play (event)
         {
             displayScore(gameStatus.otherpick, 'draw');
             gameStatus.start = false;
-            setTimeout(() => {resetBoard;}, 1500);
+            setTimeout(() => {resetBoard();}, 1500);
             return;
         }
+        if (gameStatus.turn === true)
+        {
+            if (gameStatus.pick == 'x')
+            {
+                turnDisplay.innerHTML = "It's x turn";
+            }
+            else if (gameStatus.pick == 'o')
+            {
+                turnDisplay.innerHTML = "It's o turn";
+            }
+        }
+        if (gameStatus.turn === false)
+        {
+            if (gameStatus.pick == 'x')
+            {
+                turnDisplay.innerHTML = "It's o turn";
+            }
+            else if (gameStatus.pick == 'o')
+            {
+                turnDisplay.innerHTML = "It's x turn";
+            }
+        }
     }
-    gameStatus.turn == true && gameStatus.pick =='x' ? turnDisplay.innerHTML = "It's x turn" : 
-        turnDisplay.innerHTML = "It's o turn";
-    gameStatus.turn == true && gameStatus.pick =='o' ? turnDisplay.innerHTML = "It's o turn" : 
-        turnDisplay.innerHTML = "It's x turn"
+    
 }
 
 function manageMode()
 {
-    gameStatus.turn == true && gameStatus.pick =='x' ? turnDisplay.innerHTML = "It's x turn" : 
-        turnDisplay.innerHTML = "It's o turn";
-    gameStatus.turn == true && gameStatus.pick =='o' ? turnDisplay.innerHTML = "It's o turn" : 
-        turnDisplay.innerHTML = "It's x turn"
+    if (gameStatus.turn === true)
+    {
+        if (gameStatus.pick == 'x')
+        {
+            turnDisplay.innerHTML = "It's x turn";
+        }
+        else if (gameStatus.pick == 'o')
+        {
+            turnDisplay.innerHTML = "It's o turn";
+        }
+    }
+    if (gameStatus.turn === false)
+    {
+        if (gameStatus.pick == 'x')
+        {
+            turnDisplay.innerHTML = "It's o turn";
+        }
+        else if (gameStatus.pick == 'o')
+        {
+            turnDisplay.innerHTML = "It's x turn";
+        }
+    }
     switch (mode)
     {
         case 'unbeatable':
@@ -324,7 +361,28 @@ function startGame(pick)
     pick == 'x' ? turn = true : turn = false;
     pick == 'x' ? other = 'o' : other = 'x';
     gameStatus = new gamestatus (pick, other, turn, start);
-    gameStatus.turn == true ? turnDisplay.innerHTML = "It's x turn" : turnDisplay.innerHTML = "It's o turn"
+    if (gameStatus.turn === true)
+    {
+        if (gameStatus.pick == 'x')
+        {
+            turnDisplay.innerHTML = "It's x turn";
+        }
+        else if (gameStatus.pick == 'o')
+        {
+            turnDisplay.innerHTML = "It's o turn";
+        }
+    }
+    if (gameStatus.turn === false)
+    {
+        if (gameStatus.pick == 'x')
+        {
+            turnDisplay.innerHTML = "It's o turn";
+        }
+        else if (gameStatus.pick == 'o')
+        {
+            turnDisplay.innerHTML = "It's x turn";
+        }
+    }
     if (pick == 'o')
     {
         manageMode();
