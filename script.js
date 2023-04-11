@@ -140,7 +140,6 @@ function optimalAi(array)
             displayScore(gameStatus.otherpick, 'draw');
             gameStatus.start = false;
             setTimeout(() => {resetBoard();}, 1500);
-            resetBoard ();
             return;
         }
         if (gameStatus.turn === true)
