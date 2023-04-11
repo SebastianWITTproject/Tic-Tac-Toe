@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tic-tac-toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+    <div class="level">
+    <select name="level" id="level">
+        <option value="easy">Easy</option>
+        <option value="unbeatable" selected>Unbeatable</option>
+        <option value="PVP">PlayerVsPlayer</option>
+    </select>
+    </div>
+    <div class="markerbtn">
+        <button class="marker" id="x">X</button>
+        <button class="marker" id="o">O</button>
+    </div>
+    <div id="turn">&nbsp </div>
+    </div>
+    <div class= wrapper>
+    <div class = "container anime" id="container">
+    <div class="row1 board">
+        <div class="yline" id="00">
+            
+        </div>
+        <div class="yline" id="01">
+            &nbsp
+        </div>
+        <div id="02">
+            &nbsp
+        </div>
+    </div>
+
+
+    <div class="row2 board">
+
+        <div class="yline" id="10">
+            &nbsp
+        </div>
+        <div class="yline" id="11">
+            &nbsp
+        </div>
+        <div id="12">
+            &nbsp
+        </div>
+    </div>
+
+    <div class="row3 board">
+
+        <div class="yline" id="20">
+            &nbsp
+        </div>
+        <div class="yline" id="21">
+            &nbsp
+        </div>
+        <div id="22">
+            &nbsp
+        </div>
+    </div>
+    
+    </div>
+    </div>
+    <button class="replay" id="replay">Replay</button>
+    <div class="finalscore" id="finalscore">
+        <div class="intro" id="intro">The winner is</div>
+        <div class="outcome" id="outcome">X</div>
+    </div>
+    <div class="footer">
+        <p>Made by SWP</p>
+        <img src="github-mark.png" alt="">
+    </div>
+    
+</body>
+<script src="script.js"></script>
+</html>

@@ -1,0 +1,195 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(245, 240, 240);
+    
+}
+
+.header
+{
+    border: solid grey 0.5px;
+    border-bottom: 0;
+    text-align: center;
+    width: 80vh;
+}
+
+.level
+{
+    
+    margin-right:55vh;
+}
+
+.level > select
+{
+    background-color: rgb(245, 240, 240);
+    border-bottom: solid black 2px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+.level > select:hover
+{
+    cursor: pointer;
+}
+#turn
+{
+    color: grey;
+    height: 2.7vh;
+}
+
+.markerbtn
+{
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: center;
+}
+
+.markerbtn > button
+{
+    width: 20vh;
+    height: 5vh;
+    border-radius: 2vh;
+    border: solid;
+}
+
+.marker:hover
+{
+    cursor: pointer;
+}
+
+.wrapper
+{
+    display: flex;
+    justify-content: center;
+    width: 80vh;
+    height: 50vh;
+    background-color: #31c3c3;
+}
+
+.container
+{
+    display: flex;
+    height: 20vh;
+    margin-top: 5vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container.anime 
+{
+    animation: grow 1s ease; 
+}
+
+.container > div
+{
+    display: flex;
+    justify-content: center;
+    width: 30vh;
+    text-align: center;
+    font-family: sans-serif;
+    background-color: #31c3c3;
+}
+ 
+.container > div > div
+{
+    font-size: 50px;
+    font-weight: 100px;
+    padding: 2vh;
+    width: 20vh;
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+   
+}
+
+.container > button
+{
+    margin: 0;
+    width: 30vh;
+    
+}
+.container > div > div:hover
+{
+    cursor: pointer;
+}
+
+.row1
+{
+    border-bottom: solid rgb(67, 146, 143) 5px;
+}
+
+.row2
+{
+    border-bottom: solid rgb(67, 146, 143) 5px;
+}
+
+.yline
+{
+    border-right: solid rgb(67, 146, 143) 5px;
+
+}
+
+button  
+{
+    margin : 4px;
+
+}
+
+.replay
+{
+    width: 80vh;
+    font-size: 15px;
+    margin: 0;
+    height: 7vh;
+    background-color: white;
+    border: solid grey 0.5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-top: 0;
+    color: rgb(67, 146, 143);
+}
+
+.replay:hover
+{
+    cursor: pointer;
+}
+
+.finalscore{
+    display: none;
+    font-family: sans-serif;
+    position: absolute;
+    top:40vh
+}
+
+.outcome
+{
+    font-size: 100px;
+    text-align: center;
+}
+.footer
+{
+    margin-top: 15vh;
+    font-size: 12px;
+}
+
+.footer > img
+{
+    height: 10vh;
+}
+
+@keyframes grow
+{
+    0%
+    {
+        transform: scale(0.3);
+    }
+    100%
+    {
+        transform: scale(1);
+    }
+}
