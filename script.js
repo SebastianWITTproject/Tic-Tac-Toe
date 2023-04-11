@@ -143,10 +143,29 @@ function optimalAi(array)
             resetBoard ();
             return;
         }
-        gameStatus.turn == true && gameStatus.pick =='x' ? turnDisplay.innerHTML = "It's x turn" : 
-        turnDisplay.innerHTML = "It's o turn";
-        gameStatus.turn == true && gameStatus.pick =='o' ? turnDisplay.innerHTML = "It's o turn" : 
-        turnDisplay.innerHTML = "It's x turn"
+        if (gameStatus.turn === true)
+        {
+            if (gameStatus.pick == 'x')
+            {
+                turnDisplay.innerHTML = "It's x turn";
+            }
+            else if (gameStatus.pick == 'o')
+            {
+                turnDisplay.innerHTML = "It's o turn";
+            }
+        }
+        if (gameStatus.turn === false)
+        {
+            if (gameStatus.pick == 'x')
+            {
+                turnDisplay.innerHTML = "It's o turn";
+            }
+            else if (gameStatus.pick == 'o')
+            {
+                turnDisplay.innerHTML = "It's x turn";
+            }
+        }
+    
 }
 function randomAi(array)
 {
@@ -186,10 +205,29 @@ function randomAi(array)
             }
             
         }
-        gameStatus.turn == true && gameStatus.pick =='x' ? turnDisplay.innerHTML = "It's x turn" : 
-        turnDisplay.innerHTML = "It's o turn";
-        gameStatus.turn == true && gameStatus.pick =='o' ? turnDisplay.innerHTML = "It's o turn" : 
-        turnDisplay.innerHTML = "It's x turn";
+        if (gameStatus.turn === true)
+        {
+            if (gameStatus.pick == 'x')
+            {
+                turnDisplay.innerHTML = "It's x turn";
+            }
+            else if (gameStatus.pick == 'o')
+            {
+                turnDisplay.innerHTML = "It's o turn";
+            }
+        }
+        if (gameStatus.turn === false)
+        {
+            if (gameStatus.pick == 'x')
+            {
+                turnDisplay.innerHTML = "It's o turn";
+            }
+            else if (gameStatus.pick == 'o')
+            {
+                turnDisplay.innerHTML = "It's x turn";
+            }
+        }
+    
 }
 
 function checkFreespace(array)
