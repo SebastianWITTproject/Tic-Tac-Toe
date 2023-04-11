@@ -124,6 +124,15 @@ function optimalAi(array)
     }
         array[bestMove.x][bestMove.y]= gameStatus.otherpick;
         console.log(array)
+        let elem = document.getElementById(bestMove.x.toString() + bestMove.y.toString());
+        if(gameStatus.otherpick == 'o') 
+        {
+            elem.setAttribute("style", "color:#FFFDE4");
+        }
+        if(gameStatus.otherpick == 'x')
+        {
+            elem.setAttribute("style", "color: black");
+        }
         document.getElementById(bestMove.x.toString() + bestMove.y.toString()).innerHTML = gameStatus.otherpick;
         
         gameStatus.turn = true;
@@ -183,11 +192,12 @@ function randomAi(array)
                     {
                         array[i][j] = gameStatus.otherpick;
                         let elem = document.getElementById(i.toString() + j.toString());
-                        if(boardState.otherpick == 'o') 
+                        
+                        if(gameStatus.otherpick == 'o') 
                         {
-                            elem.setAttribute("style", "color: #FFFDE4");
+                            elem.setAttribute("style", "color:#FFFDE4");
                         }
-                        if(boardState.otherpick == 'x')
+                        if(gameStatus.otherpick == 'x')
                         {
                             elem.setAttribute("style", "color: black");
                         }
@@ -291,6 +301,14 @@ function play (event)
     && gameStatus.turn === true && gameStatus.start === true)
     {
         boardState[row][column] = gameStatus.pick;
+        if(gameStatus.pick == 'o') 
+        {
+            event.target.setAttribute("style", "color:#FFFDE4");
+        }
+        if(gameStatus.pick == 'x')
+        {
+            event.target.setAttribute("style", "color: black");
+        }
         event.target.innerHTML = gameStatus.pick;
         gameStatus.turn = false;
         let result = checkWinCondition (gameStatus.pick);
@@ -321,6 +339,14 @@ function play (event)
     && gameStatus.turn === false && gameStatus.start === true && mode == 'PVP')
     {
         boardState[row][column] = gameStatus.otherpick;
+        if(gameStatus.otherpick == 'o') 
+        {
+            event.target.setAttribute("style", "color:#FFFDE4");
+        }
+        if(gameStatus.otherpick == 'x')
+        {
+            event.target.setAttribute("style", "color: black");
+        }
         event.target.innerHTML = gameStatus.otherpick;
         gameStatus.turn = true;
         let result = checkWinCondition (gameStatus.pick);
