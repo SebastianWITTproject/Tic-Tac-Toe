@@ -239,7 +239,7 @@ function play (event)
     let column = event.target.id[1];
     //console.log(gameStatus.turn)
     if (boardState[row][column] != 'o' && boardState[row][column] != 'x' 
-    && gameStatus.turn == true && gameStatus.start == true)
+    && gameStatus.turn === true && gameStatus.start === true)
     {
         boardState[row][column] = gameStatus.pick;
         event.target.innerHTML = gameStatus.pick;
@@ -269,7 +269,7 @@ function play (event)
     }
     // PVP mode
     else if (boardState[row][column] != 'o' && boardState[row][column] != 'x' 
-    && gameStatus.turn == false && gameStatus.start == true && mode == 'PVP')
+    && gameStatus.turn === false && gameStatus.start === true && mode == 'PVP')
     {
         boardState[row][column] = gameStatus.otherpick;
         event.target.innerHTML = gameStatus.otherpick;
@@ -394,6 +394,7 @@ function resetBoard()
 {
     let i = 0
     start = false;
+    gameStatus.start = false;
 
     while (i < cell.length)
     {
