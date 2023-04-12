@@ -173,13 +173,15 @@ button
 }
 .footer
 {
-    margin-top: 15vh;
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 10vh;
     font-size: 12px;
 }
 
 .footer > img
 {
-    height: 10vh;
+    height: 11vh;
 }
 
 .lines
