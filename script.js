@@ -283,7 +283,7 @@ function checkFreespace(array)
 
 function setLineColor(el, marker)
 {
-    marker == 'x' ? el.style.color = "#454545" : el.style.backgroundColor = "#FFFDE4";
+    marker == 'x' ? el.style.backgroundColor = "#454545" : el.style.backgroundColor = "#FFFDE4";
 }
 
 function setLine(marker)
