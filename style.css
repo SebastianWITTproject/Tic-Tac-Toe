@@ -234,7 +234,7 @@ button
     transform-origin: top;
     animation: winh 0.8s ease;
     transform: rotate(90deg);
-    margin-top: 44.25vh;
+    margin-top: 44vh;
     margin-left: 40.5vh;
 }
 .lines.h3
