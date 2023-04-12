@@ -1,3 +1,5 @@
+//Objects, variables, and DOM selectors
+
 let row1 = new Array(3);
 let row2 = new Array(3);
 let row3 = new Array(3);
@@ -29,7 +31,8 @@ let gameStatus;
 let mode = level.value;
 let start = false;
 
-
+//Minimax function to search for the best move by calculating all future possible combinations
+//with the idea that each player will always play the best move  
 
 function Minimax(board, depth, isAi, marker)
 {
@@ -84,7 +87,6 @@ function Minimax(board, depth, isAi, marker)
                 {
                     board[i][j] = gameStatus.pick
                     best = Math.min(best, Minimax(board,depth + 1, !isAi, gameStatus.pick));
-                    //console.log(best)
                     board[i][j] = '_';
                 }
         }
@@ -94,6 +96,8 @@ function Minimax(board, depth, isAi, marker)
     }
     
 }
+//Manage the modes that use minimax to play the best moves evaluated by minimax depending on the 
+//depth of calculation
 
 function optimalAi(array)
 {
@@ -123,7 +127,6 @@ function optimalAi(array)
         }
     }
         array[bestMove.x][bestMove.y]= gameStatus.otherpick;
-        console.log(array)
         let elem = document.getElementById(bestMove.x.toString() + bestMove.y.toString());
         if(gameStatus.otherpick == 'o') 
         {
@@ -140,17 +143,17 @@ function optimalAi(array)
         let finalScore = checkWinCondition (gameStatus.otherpick);
         if (finalScore == 10)
         {
-            
-            displayScore(gameStatus.otherpick, 'win');
+            setLine(gameStatus.otherpick);
+            setTimeout(() => {displayScore(gameStatus.otherpick, 'win');}, 1000);
             gameStatus.start = false;
-            setTimeout(() => {resetBoard();}, 1500);
+            setTimeout(() => {resetBoard();}, 2500);
             return;
         }
         if (finalScore == 0)
         {
-            displayScore(gameStatus.otherpick, 'draw');
+            setTimeout(() => {displayScore(gameStatus.otherpick, 'draw');}, 1000);
             gameStatus.start = false;
-            setTimeout(() => {resetBoard();}, 1500);
+            setTimeout(() => {resetBoard();}, 2500);
             return;
         }
         if (gameStatus.turn === true)
@@ -177,6 +180,8 @@ function optimalAi(array)
         }
     
 }
+//This function take care of the Ai turn in easy mode by playing completely random moves based
+//on a random number generated between 0 and number of free space left
 function randomAi(array)
 {
     let free = checkFreespace(boardState);
@@ -201,23 +206,23 @@ function randomAi(array)
                         {
                             elem.setAttribute("style", "color: black");
                         }
-                        console.log("go")
-                        console.log(elem.style)
+                       
                         document.getElementById(i.toString() + j.toString()).innerHTML = gameStatus.otherpick;
                         gameStatus.turn = true;
                         let result = checkWinCondition (gameStatus.otherpick);
                         if (result == 10)
                         {
-                            displayScore(gameStatus.otherpick, 'win');
-                             gameStatus.start = false;
-                            setTimeout(() => {resetBoard();}, 1500);
+                            setLine(gameStatus.otherpick);
+                            setTimeout(() => {displayScore(gameStatus.otherpick, 'win');}, 1000);
+                            gameStatus.start = false;
+                            setTimeout(() => {resetBoard();}, 2500);
                             return;
                         }
                         if (result == 0)
                         {
-                            displayScore(gameStatus.otherpick, 'draw');
+                            setTimeout(() => {displayScore(gameStatus.otherpick, 'draw');}, 1000);
                             gameStatus.start = false;
-                            setTimeout(() => {resetBoard();}, 1500);
+                            setTimeout(() => {resetBoard();}, 2500);
                             return;
                         }
                     }
@@ -226,6 +231,7 @@ function randomAi(array)
             }
             
         }
+
         if (gameStatus.turn === true)
         {
             if (gameStatus.pick == 'x')
@@ -250,6 +256,7 @@ function randomAi(array)
         }
     
 }
+//Helper function that checks remaining space left not occupied by marker 'x' or 'o'
 
 function checkFreespace(array)
 {
@@ -269,6 +276,80 @@ function checkFreespace(array)
     return count;
 }
 
+//Functions that return a number in case of a draw or a win with  possible winning
+//combination and also checks what exact combination won to display the winning line 
+//animation
+
+
+function setLineColor(el, marker)
+{
+    marker == 'x' ? el.style.color = "#454545" : el.style.backgroundColor = "#FFFDE4";
+}
+
+function setLine(marker)
+{
+    let h1 = boardState[0][0] == marker && boardState[0][1] == marker && boardState[0][2] == marker
+    let h2 = boardState[1][0] == marker && boardState[1][1] == marker && boardState[1][2] == marker
+    let h3 = boardState[2][0] == marker && boardState[2][1] == marker && boardState[2][2] == marker
+
+    let v1 = boardState[0][0] == marker && boardState[1][0] == marker && boardState[2][0] == marker
+    let v2 = boardState[0][1] == marker && boardState[1][1] == marker && boardState[2][1] == marker
+    let v3 = boardState[0][2] == marker && boardState[1][2] == marker && boardState[2][2] == marker
+    
+    let d1 = boardState[0][0] == marker && boardState[1][1] == marker && boardState[2][2] == marker
+    let d2 = boardState[0][2] == marker && boardState[1][1] == marker && boardState[2][0] == marker
+
+    if (h1)
+    {
+        setLineColor(document.querySelector(".h1"), marker);
+        document.querySelector(".h1").style.display = "inline";
+        setTimeout(() => {document.querySelector(".h1").style.display = "none";}, 1000);
+    }
+    if (h2)
+    {
+        setLineColor(document.querySelector(".h2"), marker);
+        document.querySelector(".h2").style.display = "inline";
+        setTimeout(() => {document.querySelector(".h2").style.display = "none";}, 1000);
+    }
+    if (h3)
+    {
+        setLineColor(document.querySelector(".h3"), marker);
+        document.querySelector(".h3").style.display = "inline";
+        setTimeout(() => {document.querySelector(".h3").style.display = "none";}, 1000);
+    }
+    if (v1)
+    {
+        setLineColor(document.querySelector(".v1"), marker);
+        document.querySelector(".v1").style.display = "inline";
+        setTimeout(() => {document.querySelector(".v1").style.display = "none";}, 1000);
+    }
+    if (v2)
+    {
+        setLineColor(document.querySelector(".v2"), marker);
+        document.querySelector(".v2").style.display = "inline";
+        setTimeout(() => {document.querySelector(".v2").style.display = "none";}, 1000);
+    }
+    if (v3)
+    {
+        setLineColor(document.querySelector(".v3"), marker);
+        document.querySelector(".v3").style.display = "inline";
+        setTimeout(() => {document.querySelector(".v3").style.display = "none";}, 1000);
+    }
+    if (d1)
+    {
+        setLineColor(document.querySelector(".d1"), marker);
+        document.querySelector(".d1").style.display = "inline";
+        setTimeout(() => {document.querySelector(".d1").style.display = "none";}, 1000);
+    }
+    if (d2)
+    {
+        setLineColor(document.querySelector(".d2"), marker);
+        document.querySelector(".d2").style.display = "inline";
+        setTimeout(() => {document.querySelector(".d2").style.display = "none";}, 1000);
+    }
+
+}
+
 function checkWinCondition(marker)
 {
     let h1 = boardState[0][0] == marker && boardState[0][1] == marker && boardState[0][2] == marker
@@ -282,6 +363,8 @@ function checkWinCondition(marker)
     let d1 = boardState[0][0] == marker && boardState[1][1] == marker && boardState[2][2] == marker
     let d2 = boardState[0][2] == marker && boardState[1][1] == marker && boardState[2][0] == marker
 
+    
+
     if (h1 || h2 || h3 || v1 || v2 || v3 || d1 || d2)
     {
         return 10;
@@ -292,11 +375,14 @@ function checkWinCondition(marker)
     }
     
 }
+//Main function that setups the action to do each time a cell on the board is clicked :
+//Checks if it's a player turn or the AI and calls their respective function 
+
 function play (event)
 {
     let row = event.target.id[0];
     let column = event.target.id[1];
-    //console.log(gameStatus.turn)
+
     if (boardState[row][column] != 'o' && boardState[row][column] != 'x' 
     && gameStatus.turn === true && gameStatus.start === true)
     {
@@ -312,26 +398,26 @@ function play (event)
         event.target.innerHTML = gameStatus.pick;
         gameStatus.turn = false;
         let result = checkWinCondition (gameStatus.pick);
-        console.log(result);
+        
         if (result == 10)
         {
-            displayScore(gameStatus.pick, 'win');
+            setLine(gameStatus.pick);
+            setTimeout(() => {displayScore(gameStatus.pick, 'win');}, 1000);
             gameStatus.start = false;
-            setTimeout(() => {resetBoard();}, 1500);
+            setTimeout(() => {resetBoard();}, 2500);
             return;
         }
 
         if (result == 0)
         {
-            displayScore(gameStatus.pick, 'draw');
+            setTimeout(() => {displayScore(gameStatus.otherpick, 'draw');}, 1000);
             gameStatus.start = false;
-            setTimeout(() => {resetBoard();}, 1500);
+            setTimeout(() => {resetBoard();}, 2500);
             return;
         }
         if (gameStatus.start === true)
         {
             manageMode();
-            console.log('hi')
         }
     }
     // PVP mode
@@ -352,7 +438,8 @@ function play (event)
         let result = checkWinCondition (gameStatus.otherpick);
         if (result == 10)
         {
-            displayScore(gameStatus.otherpick, 'win');
+            setLine(gameStatus.otherpick);
+            setTimeout(() => {displayScore(gameStatus.otherpick, 'win');}, 1500);
             gameStatus.start = false;
             setTimeout(() => {resetBoard();}, 1500);
             return;
@@ -360,7 +447,7 @@ function play (event)
 
         if (result == 0)
         {
-            displayScore(gameStatus.otherpick, 'draw');
+            setTimeout(() => {displayScore(gameStatus.otherpick, 'draw');}, 1500);
             gameStatus.start = false;
             setTimeout(() => {resetBoard();}, 1500);
             return;
@@ -390,6 +477,9 @@ function play (event)
     }
     
 }
+
+//The play function calls this function when it's AI turn, choose the right AI to use depending 
+//on mode selected
 
 function manageMode()
 {
@@ -428,6 +518,8 @@ function manageMode()
     }
 }
 
+//Manage start of game by constructing objects and setting up variables
+
 function startGame(pick)
 {
     start = true;
@@ -465,6 +557,7 @@ function startGame(pick)
     }
     
 }
+//reset the board display and set variables back to default
 
 function resetBoard()
 {
@@ -488,6 +581,8 @@ function resetBoard()
     turnDisplay.innerHTML = '';
     container.classList.add = "anime";
 }
+
+//Run the logic of the display of final score on the board
 
 function displayScore (marker, result)
 {
@@ -523,7 +618,6 @@ function managePick(marker)
     if (marker =='x' && start ==false)
     {
         x.setAttribute("style", "border: solid #31c3c3");
-        console.log(x.style)
         startGame(marker);
     }
     if (marker =='o' && start ==false)

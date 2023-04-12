@@ -182,6 +182,90 @@ button
     height: 10vh;
 }
 
+.lines
+{
+    position: absolute;
+    margin-top: 22vh;
+    height: 43vh;
+    width: 1vh;
+    
+
+}
+
+.lines.v2
+{
+    display: none;
+    transform-origin: top;
+    animation: win 0.8s ease;
+}
+
+.lines.v1
+{
+    display: none;
+    margin-right: 20.5vh;
+    transform-origin: top;
+    animation: win 0.8s ease; 
+}
+
+.lines.v3
+{
+    display: none;
+    margin-left: 20.5vh;
+    transform-origin: top;
+    animation: win 0.8s ease;
+}
+
+.lines.h1
+{
+    display: none;
+    transform-origin: top;
+    animation: winh 0.8s ease;
+    transform: rotate(90deg);
+    margin-top: 30.25vh;
+    margin-left: 40.5vh;
+    
+}
+
+.lines.h2
+{
+    display: none;
+    transform-origin: top;
+    animation: winh 0.8s ease;
+    transform: rotate(90deg);
+    margin-top: 44.25vh;
+    margin-left: 40.5vh;
+}
+.lines.h3
+{
+    display: none;
+    transform-origin: top;
+    animation: winh 0.8s ease;
+    transform: rotate(90deg);
+    margin-left: 40.5vh;
+    margin-top: 57.25vh;
+}
+
+.lines.d2
+{
+
+    display: none;
+    transform-origin: top;
+    height: 52vh;
+    margin-left: 32vh;
+    animation: wind 0.8s ease;
+    transform: rotate(37deg);
+}
+
+.lines.d1
+{
+    display: none;
+    transform-origin: top;
+    margin-right: 32vh;
+    height: 52vh;
+    animation: windbis 0.8s ease;
+    transform: rotate(324deg);
+}
+
 @keyframes grow
 {
     0%
@@ -191,5 +275,53 @@ button
     100%
     {
         transform: scale(1);
+    }
+}
+
+@keyframes win 
+{
+    0%
+    {
+        transform: scaley(0);
+    }
+    100%
+    {
+        transform: scaley(1);
+    }
+}
+
+@keyframes winh 
+{
+    0%
+    {
+        transform: rotate(90deg) scaley(0);
+    }
+    100%
+    {
+        transform: rotate(90deg) scaley(1);
+    }
+}
+
+@keyframes wind
+{
+    0%
+    {
+        transform: rotate(37deg) scaley(0);
+    }
+    100%
+    {
+        transform: rotate(37deg) scaley(1);
+    }
+}
+
+@keyframes windbis
+{
+    0%
+    {
+        transform: rotate(324deg) scaley(0);
+    }
+    100%
+    {
+        transform: rotate(324deg) scaley(1);
     }
 }
