@@ -349,7 +349,7 @@ function play (event)
         }
         event.target.innerHTML = gameStatus.otherpick;
         gameStatus.turn = true;
-        let result = checkWinCondition (gameStatus.pick);
+        let result = checkWinCondition (gameStatus.otherpick);
         if (result == 10)
         {
             displayScore(gameStatus.otherpick, 'win');
