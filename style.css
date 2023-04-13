@@ -65,15 +65,15 @@ body
 {
     display: flex;
     justify-content: center;
-    width: 80vh;
-    height: 50vh;
+    min-width: 80vh;
+    min-height: 50vh;
     background-color: #31c3c3;
 }
 
 .container
 {
     display: flex;
-    height: 20vh;
+    min-height: 20vh;
     margin-top: 5vh;
     flex-direction: column;
     align-items: center;
