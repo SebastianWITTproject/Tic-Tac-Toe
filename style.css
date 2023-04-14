@@ -1,5 +1,6 @@
 body
 {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,16 +10,17 @@ body
 
 .header
 {
+    width: 522px;
+    flex-shrink: 0;
     border: solid grey 0.5px;
     border-bottom: 0;
     text-align: center;
-    width: 80vh;
 }
 
 .level
 {
     
-    margin-right:55vh;
+    margin-right: 360px;
 }
 
 .level > select
@@ -37,21 +39,20 @@ body
 #turn
 {
     color: grey;
-    height: 2.7vh;
+    height: 18.5px;
 }
 
 .markerbtn
 {
     margin-top: 5vh;
-    margin-bottom: 2vh;
-    display: flex;
+    margin-bottom: 10px;
     justify-content: center;
 }
 
 .markerbtn > button
 {
-    width: 20vh;
-    height: 5vh;
+    width: 150px;
+    height: 40px;
     border-radius: 2vh;
     border: solid;
 }
@@ -63,18 +64,20 @@ body
 
 .wrapper
 {
+    position: relative;
     display: flex;
+    margin: auto;
+    flex-direction: column;
     justify-content: center;
-    min-width: 80vh;
-    min-height: 50vh;
+    align-items: center;
+    width: 523px;
+    height: 330px;
     background-color: #31c3c3;
 }
 
 .container
 {
     display: flex;
-    min-height: 20vh;
-    margin-top: 5vh;
     flex-direction: column;
     align-items: center;
 }
@@ -88,7 +91,7 @@ body
 {
     display: flex;
     justify-content: center;
-    width: 30vh;
+    width: 50%;
     text-align: center;
     font-family: sans-serif;
     background-color: #31c3c3;
@@ -98,20 +101,14 @@ body
 {
     font-size: 50px;
     font-weight: 100px;
-    padding: 2vh;
-    width: 20vh;
+    padding: 5px;
+    width: 100px;
     -webkit-user-select: none; 
     -ms-user-select: none; 
     user-select: none; 
    
 }
 
-.container > button
-{
-    margin: 0;
-    width: 30vh;
-    
-}
 .container > div > div:hover
 {
     cursor: pointer;
@@ -141,10 +138,11 @@ button
 
 .replay
 {
-    width: 80vh;
+    width: 523px;
     font-size: 15px;
-    margin: 0;
-    height: 7vh;
+    margin: auto;
+    text-align: center;
+    height: 45px;
     background-color: white;
     border: solid grey 0.5px;
     border-bottom-left-radius: 10px;
@@ -163,12 +161,12 @@ button
     display: none;
     font-family: sans-serif;
     position: absolute;
-    top:40vh
+    top:40%;
 }
 
 .outcome
 {
-    font-size: 100px;
+    font-size: 120px;
     text-align: center;
 }
 .footer
@@ -187,11 +185,8 @@ button
 .lines
 {
     position: absolute;
-    margin-top: 22vh;
-    height: 43vh;
-    width: 1vh;
-    
-
+    height: 80%;
+    width: 8px;
 }
 
 .lines.v2
@@ -204,7 +199,7 @@ button
 .lines.v1
 {
     display: none;
-    margin-right: 20.5vh;
+    margin-right: 22.5%;
     transform-origin: top;
     animation: win 0.8s ease; 
 }
@@ -212,7 +207,7 @@ button
 .lines.v3
 {
     display: none;
-    margin-left: 20.5vh;
+    margin-left: 22.5%;
     transform-origin: top;
     animation: win 0.8s ease;
 }
@@ -223,8 +218,8 @@ button
     transform-origin: top;
     animation: winh 0.8s ease;
     transform: rotate(90deg);
-    margin-top: 30.25vh;
-    margin-left: 40.5vh;
+    margin-top: 24.5%;
+    margin-left: 50%;
     
 }
 
@@ -234,8 +229,8 @@ button
     transform-origin: top;
     animation: winh 0.8s ease;
     transform: rotate(90deg);
-    margin-top: 43.5vh;
-    margin-left: 40.5vh;
+    margin-top: 52%;
+    margin-left: 50%;
 }
 .lines.h3
 {
@@ -243,8 +238,8 @@ button
     transform-origin: top;
     animation: winh 0.8s ease;
     transform: rotate(90deg);
-    margin-left: 40.5vh;
-    margin-top: 56.5vh;
+    margin-left: 50%;
+    margin-top: 80%;
 }
 
 .lines.d2
@@ -252,8 +247,9 @@ button
 
     display: none;
     transform-origin: top;
-    height: 52vh;
-    margin-left: 32vh;
+    height: 100%;
+    margin-left:37.5%;
+    margin-top: 15%;
     animation: wind 0.8s ease;
     transform: rotate(37deg);
 }
@@ -262,8 +258,9 @@ button
 {
     display: none;
     transform-origin: top;
-    margin-right: 32vh;
-    height: 52vh;
+    margin-right: 36.5%;
+    margin-top: 15%;
+    height: 100%;
     animation: windbis 0.8s ease;
     transform: rotate(324deg);
 }
