@@ -30,6 +30,7 @@ let boardState = [row1, row2, row3];
 let gameStatus;
 let mode = level.value;
 let start = false;
+let randomize = 1;
 
 //Minimax function to search for the best move by calculating all future possible combinations
 //with the idea that each player will always play the best move  
@@ -47,13 +48,18 @@ function Minimax(board, depth, isAi, marker)
         }
         if (isAi)
         {
-            result = (result + depth) * -1
+            result = (result * -1) + depth;
             return result;
         }
     }
     if (result == 0)
     {
         return result;
+    }
+
+    if (mode == "medium" && depth > 4)
+    {
+        return -1;
     }
     
     if (isAi)
@@ -67,7 +73,7 @@ function Minimax(board, depth, isAi, marker)
                 if (board[i][j] != 'x' && board[i][j] != 'o')
                 {
                     board[i][j] = gameStatus.otherpick
-                    best = Math.max(best, Minimax(board,depth + 1, !isAi, gameStatus.otherpick));
+                    best = Math.max(best , Minimax(board,depth + 1, !isAi, gameStatus.otherpick));
                     board[i][j] = '_';
                 }
         }
@@ -96,6 +102,18 @@ function Minimax(board, depth, isAi, marker)
     }
     
 }
+function medium(array)
+{
+    if (randomize > 0)
+    {
+        setTimeout(() => {randomAi(boardState);}, 1000);
+        randomize --;
+    }
+    else
+    {
+        setTimeout(() => {optimalAi(boardState);}, 1000);
+    }
+}
 //Manage the modes that use minimax to play the best moves evaluated by minimax depending on the 
 //depth of calculation
 
@@ -117,7 +135,7 @@ function optimalAi(array)
                 let current = Minimax(array, 0, false, gameStatus.otherpick);
                 array[i][j] = '_';
                 
-                if (current > bestMove.value)
+                if (current >= bestMove.value)
                 {
                     bestMove.x = i;
                     bestMove.y = j;
@@ -439,17 +457,17 @@ function play (event)
         if (result == 10)
         {
             setLine(gameStatus.otherpick);
-            setTimeout(() => {displayScore(gameStatus.otherpick, 'win');}, 1500);
+            setTimeout(() => {displayScore(gameStatus.otherpick, 'win');}, 1000);
             gameStatus.start = false;
-            setTimeout(() => {resetBoard();}, 1500);
+            setTimeout(() => {resetBoard();}, 2500);
             return;
         }
 
         if (result == 0)
         {
-            setTimeout(() => {displayScore(gameStatus.otherpick, 'draw');}, 1500);
+            setTimeout(() => {displayScore(gameStatus.otherpick, 'draw');}, 1000);
             gameStatus.start = false;
-            setTimeout(() => {resetBoard();}, 1500);
+            setTimeout(() => {resetBoard();}, 2500);
             return;
         }
         if (gameStatus.turn === true)
@@ -515,6 +533,10 @@ function manageMode()
         case 'easy':
             setTimeout(() => {randomAi(boardState);}, 1000);
             break;
+
+        case 'medium':
+            medium(boardState);
+            break;
     }
 }
 
@@ -563,6 +585,7 @@ function resetBoard()
 {
     let i = 0
     start = false;
+    randomize = 1;
 
     while (i < cell.length)
     {
